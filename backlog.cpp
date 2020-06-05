@@ -10,7 +10,8 @@ short handle_args(int argc, char ** argv) {
     } else {
       cout << "Dunno 'bout that." << endl;
     }
-  } else if (argc > 2) {
+  } 
+  if (argc > 2) {
 
   } else if (argc > 3) {
 
@@ -20,7 +21,17 @@ short handle_args(int argc, char ** argv) {
   return 1;
 }
 
+void doStuff(Token * token) {
+  Token * nextToken = new CoolStuffToken();
+  if(token->accepts(nextToken))
+    token->consume(nextToken);
+  else 
+    cout << "Tough stuff" << endl;
+}
+
 int main(int argc, char ** argv) {
   short handle_args_status = handle_args(argc, argv);
+  ConfigToken * token = new ConfigToken();
+  doStuff(token);
   return 0;
 }
